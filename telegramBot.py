@@ -1,14 +1,6 @@
 import requests
 
-def telegram_bot_sendtext(bot_message):
-
-    bot_token = ''
-    bot_chatID = ''
-    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
-
-    response = requests.get(send_text)
-
+def sendMessageByTokenAndChatId(token, chatId, message):
+    url = 'https://api.telegram.org/bot' + token + '/sendMessage?chat_id=' + chatId + '&parse_mode=Markdown&text=' + message
+    response = requests.get(url)
     return response.json()
-
-test = telegram_bot_sendtext("Text Here!")
-print(test)
